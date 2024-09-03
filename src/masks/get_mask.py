@@ -5,8 +5,10 @@ def get_mask_card_number(card_number: int) -> str:
     7000 79** **** 6361  # выход функции"""
 
     card_number_str = str(card_number)
-    replace_stars = f'{2 * "*"} {4 * "*"}'
-    return f"{card_number_str[0:4]} {card_number_str[4:6]}{replace_stars} {card_number_str[-4:]}"
+    return "{0} {1}** **** {2}".format(card_number_str[0:4], card_number_str[4:6], card_number_str[-4:])
+
+
+
 
 
 def get_mask_account(account_number: int) -> str:
