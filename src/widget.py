@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from src import masks
 
 
@@ -21,5 +23,6 @@ def get_date(date_format_full: str) -> str:
     """возвращает строку с датой в формате  "ДД.ММ.ГГГГ"
     ввод  2024-03-11T02:26:18.671407"""
 
-    date_format_dd_mm_yyyy = f"{date_format_full[5:7]}.{date_format_full[8:10]}.{date_format_full[:4]}"
-    return date_format_dd_mm_yyyy
+    format = "%Y-%m-%dT%H:%M:%S.%f"
+    date_format_date = datetime.strptime(date_format_full, format)
+    return date_format_date.strftime("%d.%m.%Y")
