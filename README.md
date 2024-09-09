@@ -18,6 +18,9 @@ state соответствует указанному значению.
 ## Установка:
 Клонируйте репозиторий:
 git clone https://github.com/Kuchuk67/Home_work.git
+
 Установите зависимости:
+
 poetry env use pythom
+
 poetry install
