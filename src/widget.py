@@ -10,13 +10,14 @@ def mask_account_card(customer_card: str) -> str:
 
     customer_card_list = customer_card.split(" ")
     # последний элемент списка customer_card_list это номер карты или счета
-    number = (customer_card_list.pop())
-    number = ''.join(re.findall(r'\b\d+\b', number))
+    number_str = customer_card_list.pop()
+    number = int("".join(re.findall("[0-9]+", number_str)))
 
     if customer_card_list[0] == "Счет":
-        mask_number = masks.get_mask_account(int(number))
+        mask_number = masks.get_mask_account(number)
     else:
-        mask_number = masks.get_mask_card_number(int(number))
+        mask_number = masks.get_mask_card_number(number)
+
     customer_card_list.append(mask_number)
     mask_customer_card = " ".join(customer_card_list)
     return mask_customer_card
