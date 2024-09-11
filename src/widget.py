@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 
 from src import masks
@@ -9,11 +10,13 @@ def mask_account_card(customer_card: str) -> str:
 
     customer_card_list = customer_card.split(" ")
     # последний элемент списка customer_card_list это номер карты или счета
-    number = int(customer_card_list.pop())
+    number = (customer_card_list.pop())
+    number = ''.join(re.findall(r'\b\d+\b', number))
+
     if customer_card_list[0] == "Счет":
-        mask_number = masks.get_mask_account(number)
+        mask_number = masks.get_mask_account(int(number))
     else:
-        mask_number = masks.get_mask_card_number(number)
+        mask_number = masks.get_mask_card_number(int(number))
     customer_card_list.append(mask_number)
     mask_customer_card = " ".join(customer_card_list)
     return mask_customer_card
