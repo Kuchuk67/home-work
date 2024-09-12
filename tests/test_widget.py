@@ -31,3 +31,11 @@ def test_mask_account_card(number, expected):
 Проверка работы функции на различных входных форматах даты, включая граничные случаи и нестандартные строки с датами.
 Проверка, что функция корректно обрабатывает входные строки, где отсутствует дата.
 '''
+from src.widget import get_date
+data_for_test = '21.11.1977'
+def test_get_date():
+    with pytest.raises(ValueError) as exc_info:
+        get_date(data_for_test)
+
+    # Проверяем, что сообщение об ошибке соответствует ожидаемому
+    assert str(exc_info.value) == "time data '"+data_for_test+"' does not match format '%Y-%m-%dT%H:%M:%S.%f'"
