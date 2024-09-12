@@ -1,4 +1,4 @@
-[tool.poetry]
+ [tool.poetry]
 name = "home-work"
 version = "0.1.0"
 description = ""
@@ -14,6 +14,7 @@ flake8 = "^7.1.1"
 mypy = "^1.11.2"
 black = "^24.8.0"
 isort = "^5.13.2"
+pytest = "^8.3.3"
 
 [build-system]
 requires = ["poetry-core"]
