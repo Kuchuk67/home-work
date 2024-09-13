@@ -8,15 +8,15 @@ def mask_account_card(customer_card: str) -> str:
     """Возвращает строку с названием платежной системы или счета
     и с замаскированным номером."""
 
-    customer_card = re.sub(r'\s+', ' ', customer_card)
+    customer_card = re.sub(r"\s+", " ", customer_card)
     customer_card_list = customer_card.split(" ")
     if len(customer_card_list) < 2:
-        return 'Error'
+        return "Error"
     # последний элемент списка customer_card_list это номер карты или счета
     number_str = customer_card_list.pop()
     number_str = "".join(re.findall("[0-9]+", number_str))
-    if number_str == '':
-        return 'Error'
+    if number_str == "":
+        return "Error"
     number = int(number_str)
 
     if customer_card_list[0] == "Счет":
