@@ -4,7 +4,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 """  # проверяем get_mask_card_number
 Тестирование правильности маскирования номера карты.
-Проверка работы функции на различных входных форматах номеров карт, 
+Проверка работы функции на различных входных форматах номеров карт,
 включая граничные случаи и нестандартные длины номеров.
 Проверка, что функция корректно обрабатывает входные строки, где отсутствует номер карты.
 """
@@ -22,7 +22,7 @@ from src.masks import get_mask_account, get_mask_card_number
         (0, "Error"),
     ],
 )
-def test_get_mask_card_number(number, expected):
+def test_get_mask_card_number(number: int, expected: str) -> None:
     assert get_mask_card_number(number) == expected
 
 
@@ -45,5 +45,5 @@ def test_get_mask_card_number(number, expected):
         (0, "Error"),
     ],
 )
-def test_get_mask_account(number_account, expected_account):
+def test_get_mask_account(number_account: int, expected_account: str) -> None:
     assert get_mask_account(number_account) == expected_account

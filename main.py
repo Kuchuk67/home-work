@@ -1,7 +1,3 @@
-import json
-import os
-import sys
-
 from src import widget
 
 print(widget.mask_account_card("Visa Platinum 7000792289606361"))

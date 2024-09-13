@@ -40,7 +40,8 @@ exclude = '''
     | \.mypy_cache
     | \.tox
     | \.venv
-    | \htmlcov
+    | \src
+    | \tests
     | dist
   )/
   | foo.py           # Также отдельно исключить файл с именем foo.py
