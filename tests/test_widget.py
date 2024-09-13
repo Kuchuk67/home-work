@@ -29,20 +29,21 @@ def test_mask_account_card(number: str, expected: str) -> None:
     assert mask_account_card(number) == expected
 
 
-data_for_test = "21.11.1977"
-
+data_for_test = "2024-03-11T02:26:18.671407"
+data_for_test_error = "2024-03-11"
 
 def test_get_date() -> None:
+    assert get_date(data_for_test) == '11.03.2024'
+
     """
     Функция get_data
-
     Тестирование правильности преобразования даты.
     Проверка работы функции на различных входных форматах даты, включая граничные случаи
     и нестандартные строки с датами.
     Проверка, что функция корректно обрабатывает входные строки, где отсутствует дата.
     """
     with pytest.raises(ValueError) as exc_info:
-        get_date(data_for_test)
+        get_date(data_for_test_error)
 
     # Проверяем, что сообщение об ошибке соответствует ожидаемому
-    assert str(exc_info.value) == "time data '" + data_for_test + "' does not match format '%Y-%m-%dT%H:%M:%S.%f'"
+    assert str(exc_info.value) == "time data '" + data_for_test_error + "' does not match format '%Y-%m-%dT%H:%M:%S.%f'"
