@@ -30,7 +30,8 @@ def test_mask_account_card(number: str, expected: str) -> None:
 
 
 data_for_test = "2024-03-11T02:26:18.671407"
-data_for_test_error = "2024-03-11"
+data_for_test_er = "2024-03-11"
+
 
 def test_get_date() -> None:
     assert get_date(data_for_test) == '11.03.2024'
@@ -43,7 +44,7 @@ def test_get_date() -> None:
     Проверка, что функция корректно обрабатывает входные строки, где отсутствует дата.
     """
     with pytest.raises(ValueError) as exc_info:
-        get_date(data_for_test_error)
+        get_date(data_for_test_er)
 
     # Проверяем, что сообщение об ошибке соответствует ожидаемому
-    assert str(exc_info.value) == "time data '" + data_for_test_error + "' does not match format '%Y-%m-%dT%H:%M:%S.%f'"
+    assert str(exc_info.value) == "time data '" + data_for_test_er + "' does not match format '%Y-%m-%dT%H:%M:%S.%f'"
