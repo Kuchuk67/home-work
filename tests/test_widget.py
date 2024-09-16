@@ -34,7 +34,7 @@ data_for_test_er = "2024-03-11"
 
 
 def test_get_date() -> None:
-    assert get_date(data_for_test) == '11.03.2024'
+    assert get_date(data_for_test) == "11.03.2024"
 
     """
     Функция get_data
