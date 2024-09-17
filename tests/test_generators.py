@@ -99,7 +99,7 @@ def test_transaction_descriptions(transactions: list, right_descriptions: list) 
     transaction_descriptions
         1. Тестирование работы выдачи списка проводок
         2. Тестирование отсутствия ключа
-        """
+    """
     descriptions = transaction_descriptions(transactions)
     assert next(descriptions) == right_descriptions[0]
     assert next(descriptions) == right_descriptions[1]
