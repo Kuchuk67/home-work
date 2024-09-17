@@ -1,6 +1,6 @@
 from typing import Callable, Generator
-
-def filter_by_currency(transactions: list, currency: str) -> Generator[dict]:
+#-> Generator[dict]
+def filter_by_currency(transactions: list, currency: str) :
     '''
     :param transactions: список транзакций
     :param currency: код валюты
@@ -12,7 +12,7 @@ def filter_by_currency(transactions: list, currency: str) -> Generator[dict]:
             yield dict_transaction
 
 
-def transaction_descriptions(transactions: list) -> Generator[str]:
+def transaction_descriptions(transactions: list) :
     '''
     :param transactions: список транзакций
     :return: название операции
@@ -23,7 +23,7 @@ def transaction_descriptions(transactions: list) -> Generator[str]:
             yield description
 
 
-def card_number_generator(start_card: int, end_card: int) ->  Generator[str]:
+def card_number_generator(start_card: int, end_card: int) :
     '''
     :param start_card: начало нумерации
     :param end_card: конец нумерации
