@@ -1,8 +1,9 @@
 import os
 from functools import wraps
+from typing import TypeVar, cast, Any, Callable
 
 
-def log(filename=''):
+def log(filename: str = '') -> Any:
     """
     Декоратор позволяет автоматически логировать начало и конец выполнения функции,
     а также ее результаты или возникшие ошибки.
@@ -10,9 +11,9 @@ def log(filename=''):
     Если filename не задан, логи выводятся в консоль.
     """
 
-    def log_decorator(func):
+    def log_decorator(func: Callable[..., Any]) -> Any:
         @wraps(func)
-        def wrapper(*args:tuple, **kwargs:dict) -> None:
+        def wrapper(*args: tuple, **kwargs: dict) -> Any:
 
             try:
                 result = func(*args, **kwargs)
@@ -41,7 +42,7 @@ def log(filename=''):
 
 
 @log(filename="    ")
-def my_function(x:int, y:int) -> float:
+def my_function(x: int, y: int) -> float:
     """тестовая функция"""
     return x / y
 
