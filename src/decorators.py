@@ -19,11 +19,11 @@ def log(filename: str = "") -> Any:
                 if filename_no_space > "":
                     # если есть имя файла пишем в файл
                     if not os.path.exists(os.path.join(os.path.dirname(__file__), "log")):
-                        os.mkdir('log')
+                        os.mkdir("log")
                     path_to_file = os.path.join(os.path.dirname(__file__), "log", filename_no_space)
                     # path_to_file = os.path.abspath("log/" + filename_no_space)
                     with open(path_to_file, "a") as file:
-                        file.write(log_text_for_write + '\n')
+                        file.write(log_text_for_write + "\n")
                 else:
                     # если нет имени файла пишем в консоль
                     print(log_text_for_write)
@@ -51,5 +51,8 @@ def log(filename: str = "") -> Any:
 def add_numbers(a: int) -> float:
     return 10 / a
 
+
+current_directory = os.getcwd()
+print(current_directory)
 
 print(add_numbers(2))

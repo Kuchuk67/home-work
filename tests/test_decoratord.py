@@ -19,6 +19,6 @@ def test_log(capsys: Any) -> None:
     with pytest.raises(ZeroDivisionError) as excinfo:
         add_numbers(0)
 
-    assert str(excinfo.value) == 'division by zero'
+    assert str(excinfo.value) == "division by zero"
     captured2 = capsys.readouterr()
     assert captured2.out == "add_numbers error: division by zero. Inputs: (0,) {}\n"
