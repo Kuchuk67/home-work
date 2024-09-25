@@ -1,6 +1,8 @@
+from config import PATH_HOME
 import os
 from functools import wraps
 from typing import Any, Callable
+
 
 
 def log(filename: str = "") -> Any:
@@ -18,10 +20,11 @@ def log(filename: str = "") -> Any:
                 filename_no_space = filename.replace(" ", "")
                 if filename_no_space > "":
                     # если есть имя файла пишем в файл
-                    if not os.path.exists(os.path.join(os.path.dirname(__file__), "log")):
-                        os.mkdir("log")
-                    path_to_file = os.path.join(os.path.dirname(__file__), "log", filename_no_space)
+                    if not os.path.exists(os.path.join(PATH_HOME, "log")):
+                        os.mkdir(os.path.join(PATH_HOME, "log"))
+                    path_to_file = os.path.join(PATH_HOME, "log", filename_no_space)
                     # path_to_file = os.path.abspath("log/" + filename_no_space)
+
                     with open(path_to_file, "a") as file:
                         file.write(log_text_for_write + "\n")
                 else:
@@ -47,12 +50,12 @@ def log(filename: str = "") -> Any:
     return log_decorator
 
 
-@log(filename="")
+@log(filename="log.txt")
 def add_numbers(a: int) -> float:
     return 10 / a
 
 
-current_directory = os.getcwd()
-print(current_directory)
 
+print(os.path.join(PATH_HOME, "log"))
+print(os.path.join(os.path.dirname(__file__), "log"))
 print(add_numbers(2))
