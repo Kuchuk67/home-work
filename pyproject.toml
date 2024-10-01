@@ -1,5 +1,5 @@
  [tool.poetry]
-name = "home-work"
+name = "card_client"
 version = "0.1.0"
 description = ""
 authors = ["PC <kuchukov.sergey@gmail.com>"]
@@ -40,8 +40,6 @@ exclude = '''
     | \.mypy_cache
     | \.tox
     | \.venv
-    | \src
-    | \tests
     | dist
   )/
   | foo.py           # Также отдельно исключить файл с именем foo.py
