@@ -1,4 +1,4 @@
- [tool.poetry]
+[tool.poetry]
 name = "card_client"
 version = "0.1.0"
 description = ""
