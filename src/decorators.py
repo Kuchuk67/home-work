@@ -1,8 +1,8 @@
-from config import PATH_HOME
 import os
 from functools import wraps
 from typing import Any, Callable
 
+from config import PATH_HOME
 
 
 def log(filename: str = "") -> Any:
@@ -53,7 +53,6 @@ def log(filename: str = "") -> Any:
 @log(filename="log.txt")
 def add_numbers(a: int) -> float:
     return 10 / a
-
 
 
 print(os.path.join(PATH_HOME, "log"))

@@ -89,9 +89,9 @@ x = [
         "from": "Visa Platinum 1246377376343588",
         "to": "Счет 14211924144426031657",
     },
-    ]
+]
 
-q = (filter_by_currency(x, "USD"))
+q = filter_by_currency(x, "USD")
 print(next(q))
 print(next(q))
 print(next(q))
