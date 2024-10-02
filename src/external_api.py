@@ -1,8 +1,8 @@
 import json
 import os
+
 import requests
 from dotenv import load_dotenv
-from typing import Any
 
 # Загрузка переменных из .env-файла
 load_dotenv()
@@ -27,7 +27,7 @@ def transaction_amount_in_rubles(transaction: dict) -> float:
 
         url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={cur_code}&amount={amount_transaction}"
 
-        payload: dict[Any]  = {}
+        payload: dict = {}
         headers = {"apikey": API_KEY}
 
         response = requests.get(url, headers=headers, data=payload)
@@ -46,6 +46,6 @@ def transaction_amount_in_rubles(transaction: dict) -> float:
         # result = json_data
         if not result.get("success"):
             raise SystemError("ОПИСАНИЕ: API вернул False")
-        #print(result)
+        # print(result)
 
         return float(round(result.get("result", 0), 2))
