@@ -1,5 +1,6 @@
 from unittest.mock import mock_open, patch
 from src.utils import read_json_file
+import pytest
 
 data_json = '''[
   {
@@ -42,3 +43,8 @@ def test_read_json_file() -> None:
     with patch("builtins.open", m):
         lines = read_json_file("my_file.txt")
     assert lines == data_list
+
+
+def test_read_json_file_not_file() -> None:
+    lines =  read_json_file("no_files.txt")
+    assert lines == []

@@ -15,7 +15,9 @@ def read_json_file(file_name: str) -> Any:
     try:
         with open(path_to_file, "r", encoding="utf-8") as file:
             data_json = json.load(file)
-    except Exception:
+    except FileNotFoundError:
+        return []
+    except json.JSONDecodeError:
         return []
     else:
         return data_json
