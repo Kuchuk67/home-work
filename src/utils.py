@@ -1,10 +1,12 @@
 import json
 import os
 from typing import Any
-from src.logs_init import logger_init
-from config import PATH_HOME
 
-named_logger = logger_init(__name__)
+from config import PATH_HOME
+from src.logs_init import logger_init
+
+named_logger = logger_init('utils')
+
 
 def read_json_file(file_name: str) -> Any:
     """

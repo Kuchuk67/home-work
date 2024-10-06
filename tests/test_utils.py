@@ -1,6 +1,6 @@
 from unittest.mock import mock_open, patch
+
 from src.utils import read_json_file
-import pytest
 
 data_json = '''[
   {
@@ -46,5 +46,5 @@ def test_read_json_file() -> None:
 
 
 def test_read_json_file_not_file() -> None:
-    lines =  read_json_file("no_files.txt")
+    lines = read_json_file("no_files.txt")
     assert lines == []
