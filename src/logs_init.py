@@ -2,6 +2,10 @@ import logging
 import os
 from config import PATH_HOME
 
+if not os.path.exists(os.path.join(PATH_HOME, "logs")):
+    os.mkdir(os.path.join(PATH_HOME, "logs"))
+
+
 
 def logger_init(name_module):
     # Настройка логирования
