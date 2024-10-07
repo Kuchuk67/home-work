@@ -1,6 +1,6 @@
 from unittest.mock import mock_open, patch
 
-from src.utils import read_json_file
+from src.utils import read_json_file, read_file
 
 data_json = '''[
   {
@@ -19,6 +19,10 @@ data_json = '''[
     "to": "Счет 64686473678894779589"
   }
 ]'''
+
+data_csv = '''id;state;date;amount;currency_name;currency_code;from;to;description
+441945886;EXECUTED;2019-08-26T10:50:58.294041;31957.58;руб.;RUB;Maestro 1596837868705199;Счет 64686473678894779589;Перевод организации'''
+
 data_list = [{
     "id": 441945886,
     "state": "EXECUTED",
@@ -38,13 +42,20 @@ data_list = [{
 
 # Mocking file open in Python
 
-def test_read_json_file() -> None:
+
+def test_read_file() -> None:
     m = mock_open(read_data=data_json)
     with patch("builtins.open", m):
-        lines = read_json_file("my_file.txt")
+        lines = read_file("my_file.json")
     assert lines == data_list
 
-
-def test_read_json_file_not_file() -> None:
-    lines = read_json_file("no_files.txt")
+def test_read_file_not_file() -> None:
+    lines = read_file("no_files.json")
     assert lines == []
+
+
+def test_read_scv_file() -> None:
+    m = mock_open(read_data=data_csv)
+    with patch("builtins.open", m):
+        lines = read_file("my_file.csv")
+    assert lines == data_list
