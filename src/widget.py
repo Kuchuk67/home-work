@@ -34,5 +34,13 @@ def get_date(date_format_full: str) -> str:
     ввод  2024-03-11T02:26:18.671407"""
 
     format = "%Y-%m-%dT%H:%M:%S.%f"
-    date_format_date = datetime.strptime(date_format_full, format)
-    return date_format_date.strftime("%d.%m.%Y")
+    try:
+        date_format_date = datetime.strptime(date_format_full, format)
+
+        date_format_date = date_format_date.strftime("%d.%m.%Y")
+    except Exception:
+        date_format_date = ''
+
+    return date_format_date
+
+#print(get_date ('2019-01-05T00:52:30.108534'))
