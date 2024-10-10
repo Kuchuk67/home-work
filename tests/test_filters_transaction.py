@@ -1,5 +1,5 @@
 import pytest
-from src.filters_transaction import filter_tr_description
+from src.filters_transaction import filter_tr_description, counter_category
 
 @pytest.fixture
 def transactions() -> list:  # Имя фикстуры — любое
@@ -65,8 +65,21 @@ def transactions_description() -> list:  # Имя фикстуры — любо�
         },
     ]
 
+@pytest.fixture
+def category() -> dict:  # Имя фикстуры — любое
+    return {
+            "Перевод организации": 2,
+            "Открытие счета": 1,
+            "Перевод со счета на счет": 1,
+        }
+
 
 
 def test_filter_tr_description(transactions: list, transactions_description: list) -> None:
     result = filter_tr_description(transactions, 'Органи')
     assert result == transactions_description
+
+
+def test_counter_category(transactions: list, category: dict) -> None:
+    result = counter_category(transactions, ["Перевод организации", "Открытие счета", "Перевод со счета на счет"])
+    assert result == category
