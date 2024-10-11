@@ -5,7 +5,9 @@ import pandas as pd
 from src.utils import read_file
 
 data_csv = """id;state;date;amount;currency_name;currency_code;from;to;description
-441945886;EXECUTED;2019-08-26T10:50:58.294041;31957.58;руб.;RUB;Maestro 1596837868705199;Счет 64686473678894779589;Перевод организации"""
+441945886;EXECUTED;2019-08-26T10:50:58.294041;31957.58;руб.;RUB;Maestro 1596837868705199;"""
+
+data_csv = data_csv + """Счет 64686473678894779589;Перевод организации"""
 
 
 data_xls = pd.DataFrame(

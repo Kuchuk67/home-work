@@ -11,12 +11,12 @@ def mask_account_card(customer_card: str) -> str:
     customer_card = re.sub(r"\s+", " ", customer_card)
     customer_card_list = customer_card.split(" ")
     if len(customer_card_list) < 2:
-        return "Error"
+        return ""
     # последний элемент списка customer_card_list это номер карты или счета
     number_str = customer_card_list.pop()
     number_str = "".join(re.findall("[0-9]+", number_str))
     if number_str == "":
-        return "Error"
+        return ""
     number = int(number_str)
 
     if customer_card_list[0] == "Счет":
@@ -37,10 +37,11 @@ def get_date(date_format_full: str) -> str:
     try:
         date_format_date = datetime.strptime(date_format_full, format)
 
-        date_format_date = date_format_date.strftime("%d.%m.%Y")
+        result = date_format_date.strftime("%d.%m.%Y")
     except Exception:
-        date_format_date = ''
+        result = ""
 
-    return date_format_date
+    return result
 
-#print(get_date ('2019-01-05T00:52:30.108534'))
+
+# print(get_date ('2019-01-05T00:52:30.108534'))
