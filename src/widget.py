@@ -8,6 +8,9 @@ def mask_account_card(customer_card: str) -> str:
     """Возвращает строку с названием платежной системы или счета
     и с замаскированным номером."""
 
+    #customer_card = customer_card.where(pd.notnull(customer_card), '')
+    if customer_card == '':
+        return ""
     customer_card = re.sub(r"\s+", " ", customer_card)
     customer_card_list = customer_card.split(" ")
     if len(customer_card_list) < 2:
@@ -35,7 +38,7 @@ def get_date(date_format_full: str) -> str:
 
     format = "%Y-%m-%dT%H:%M:%S.%f"
     try:
-        date_format_date = datetime.strptime(date_format_full, format)
+        date_format_date = datetime.fromisoformat(date_format_full) # datetime.strptime(date_format_full, format)
 
         result = date_format_date.strftime("%d.%m.%Y")
     except Exception:
@@ -44,4 +47,4 @@ def get_date(date_format_full: str) -> str:
     return result
 
 
-# print(get_date ('2019-01-05T00:52:30.108534'))
+print(mask_account_card(' '))

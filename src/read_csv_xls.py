@@ -42,6 +42,7 @@ def read_xls_file(file_name: str) -> Any:
     data_xls = []
     data_xls_dict: dict[str, Any] = {}
     excel_data = pd.read_excel(file_name)
+    excel_data = excel_data.fillna('') #замена NAN на ""
     df_dict = excel_data.to_dict(orient="records")
     for item in df_dict:
         data_xls_dict["id"] = item.get("id")

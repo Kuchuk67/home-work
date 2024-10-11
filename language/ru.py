@@ -8,13 +8,14 @@ text_ru["input_file"] = """Выберите необходимый пункт м
 3. Получить информацию о транзакциях из XLSX-файла")"""
 
 text_ru["input_status"] = ("""Введите статус, по которому необходимо выполнить фильтрацию.'''
-''' Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING:""")
+''' Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING: """)
 
 text_ru["input_value_error"] = """Введено не верное значение"""
 
 text_ru["filter_by_status"] = """Операции отфильтрованы по статусу"""
 
-text_ru["filter_by_status_error"] = """Статус операции "test" недоступен."""
+text_ru["filter_by_status_error_1"] = """Статус операции"""
+text_ru["filter_by_status_error_2"] = """недоступен."""
 
 text_ru["sorting_data"] = """Отсортировать операции по дате? Да/Нет """
 

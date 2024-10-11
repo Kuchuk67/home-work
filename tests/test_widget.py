@@ -30,7 +30,7 @@ def test_mask_account_card(number: str, expected: str) -> None:
 
 
 data_for_test = "2024-03-11T02:26:18.671407"
-data_for_test_er = "2024-03-11"
+data_for_test_er = "20254-03-11"
 
 
 def test_get_date() -> None:
