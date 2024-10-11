@@ -1,6 +1,6 @@
 import pytest
 
-from src.filters_transaction import counter_category, filter_for_description
+from src.filters_transaction import counter_category, filter_for_description, filter_for_rub
 
 
 @pytest.fixture
@@ -19,7 +19,7 @@ def transactions() -> list:  # Имя фикстуры — любое
             "id": 939719570,
             "state": "PENDING",
             "date": "2018-06-30T02:08:58.425572",
-            "operationAmount": {"amount": "9824.07", "currency": {"name": "руб.", "code": "RUB"}},
+            "operationAmount": {"amount": "9824.07", "currency": {"name": "руб.", "code": "USD"}},
             "description": "Открытие счета",
             "from": "Счет 75106830613657916952",
             "to": "Счет 11776614605963066702",
@@ -37,7 +37,7 @@ def transactions() -> list:  # Имя фикстуры — любое
             "id": 939713450,
             "state": "EXECUTED",
             "date": "2018-06-29T02:08:58.425572",
-            "operationAmount": {"amount": "782.67", "currency": {"name": "руб.", "code": "RUB"}},
+            "operationAmount": {"amount": "782.67", "currency": {"name": "руб.", "code": "USD"}},
             "description": "Перевод со счета на счет",
             "from": "Счет 11776614605963066702",
             "to": "Счет 75106830613657916952",
@@ -86,3 +86,8 @@ def test_filter_tr_description(transactions: list, transactions_description: lis
 def test_counter_category(transactions: list, category: dict) -> None:
     result = counter_category(transactions, ["Перевод организации", "Открытие счета", "Перевод со счета на счет"])
     assert result == category
+
+
+def test_filter_for_rub(transactions: list, transactions_description: list) -> None:
+    result =  filter_for_rub(transactions)
+    assert result == transactions_description
