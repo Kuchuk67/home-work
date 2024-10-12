@@ -8,15 +8,18 @@ def mask_account_card(customer_card: str) -> str:
     """Возвращает строку с названием платежной системы или счета
     и с замаскированным номером."""
 
+    #customer_card = customer_card.where(pd.notnull(customer_card), '')
+    if customer_card == '':
+        return ""
     customer_card = re.sub(r"\s+", " ", customer_card)
     customer_card_list = customer_card.split(" ")
     if len(customer_card_list) < 2:
-        return "Error"
+        return ""
     # последний элемент списка customer_card_list это номер карты или счета
     number_str = customer_card_list.pop()
     number_str = "".join(re.findall("[0-9]+", number_str))
     if number_str == "":
-        return "Error"
+        return ""
     number = int(number_str)
 
     if customer_card_list[0] == "Счет":
@@ -34,5 +37,14 @@ def get_date(date_format_full: str) -> str:
     ввод  2024-03-11T02:26:18.671407"""
 
     format = "%Y-%m-%dT%H:%M:%S.%f"
-    date_format_date = datetime.strptime(date_format_full, format)
-    return date_format_date.strftime("%d.%m.%Y")
+    try:
+        date_format_date = datetime.fromisoformat(date_format_full) # datetime.strptime(date_format_full, format)
+
+        result = date_format_date.strftime("%d.%m.%Y")
+    except Exception:
+        result = ""
+
+    return result
+
+
+print(mask_account_card(' '))

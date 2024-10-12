@@ -55,5 +55,4 @@ def read_file(file_name: str) -> Any:
     return []
 
 
-if __name__ == "__main__":
-    print(read_file("transactions.csv"))
+

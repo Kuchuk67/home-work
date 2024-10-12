@@ -1,5 +1,6 @@
 import csv
-from typing import Any, Union, Collection
+from typing import Any, Union
+
 import pandas as pd
 
 
@@ -10,7 +11,7 @@ def read_csv_file(file_name: str) -> Any:
     список словарей с данными.
     """
     data_csv = []
-    data_csv_dict:dict[str, Union[str, int, dict]] = {}
+    data_csv_dict: dict[str, Union[str, int, dict]] = {}
     with open(file_name, "r", encoding="utf-8") as file:
         reader = csv.reader(file, delimiter=";")
         next(reader)
@@ -29,7 +30,6 @@ def read_csv_file(file_name: str) -> Any:
             data_csv.append(data_csv_dict)
             data_csv_dict = {}
 
-
     return data_csv
 
 
@@ -40,11 +40,12 @@ def read_xls_file(file_name: str) -> Any:
     список словарей с данными.
     """
     data_xls = []
-    data_xls_dict:dict[str, Any] = {}
+    data_xls_dict: dict[str, Any] = {}
     excel_data = pd.read_excel(file_name)
+    excel_data = excel_data.fillna('') #замена NAN на ""
     df_dict = excel_data.to_dict(orient="records")
     for item in df_dict:
-        data_xls_dict['id'] = item.get('id')
+        data_xls_dict["id"] = item.get("id")
         data_xls_dict["state"] = item.get("state")
         data_xls_dict["date"] = item.get("date")
         data_xls_dict["operationAmount"] = {
