@@ -29,8 +29,7 @@ def choice_status() -> str:
     """Пользователь выбирает статус интересующих его операций."""
     status_transactions = ""
     while True:
-        you_choice_status = input(text_ru["input_status"])
-        you_choice_status.upper()
+        you_choice_status = input(text_ru["input_status"]).upper()
         if you_choice_status in ["EXECUTED", "CANCELED", "PENDING"]:
             print(f'{text_ru["filter_by_status"]} "{you_choice_status}"')
             return you_choice_status
